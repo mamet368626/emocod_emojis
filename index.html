@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>マイ・グリッドギャラリー</title>
     <style>
-        /* 💡 ここで並び方のデザイン（CSS）を決めています */
         body {
             font-family: sans-serif;
             background-color: #f9f9f9;
@@ -17,16 +16,13 @@
             color: #333;
         }
 
-        /* 📦 ボックスを並べる大枠（コンテナ）の設定 */
         .grid-container {
             display: grid;
-            /* 画面幅に合わせて自動で列数を増減させる魔法のコード */
             grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
             gap: 10px; /* ボックス同士のすき間 */
             padding: 10px;
         }
 
-        /* ⬜️ 中身の四角いボックス（アイテム）の設定 */
         .grid-item {
             background-color: #ffffff;
             border: 1px solid #e0e0e0;
@@ -40,7 +36,6 @@
             transition: transform 0.2s;
         }
 
-        /* 👆 指でタップ（またはマウスホバー）したときに少し浮き上がらせる演出 */
         .grid-item:active {
             transform: scale(0.9);
             background-color: #f0f0f0;
@@ -51,7 +46,6 @@
 
     <h1>絵文字リスト表</h1>
 
-    <!-- 🟢 ここに並べたいものを「class="grid-item"」をつけて並べていきます -->
     <div class="grid-container">
         <div class="grid-item">🏍</div>
         <div class="grid-item">👦</div>
