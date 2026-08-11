@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイ・グリッドギャラリー</title>
+    <style>
+        /* 💡 ここで並び方のデザイン（CSS）を決めています */
+        body {
+            font-family: sans-serif;
+            background-color: #f9f9f9;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* 📦 ボックスを並べる大枠（コンテナ）の設定 */
+        .grid-container {
+            display: grid;
+            /* 画面幅に合わせて自動で列数を増減させる魔法のコード */
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 10px; /* ボックス同士のすき間 */
+            padding: 10px;
+        }
+
+        /* ⬜️ 中身の四角いボックス（アイテム）の設定 */
+        .grid-item {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            aspect-ratio: 1 / 1; /* 正方形にする */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem; /* 絵文字や文字の大きさ */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        /* 👆 指でタップ（またはマウスホバー）したときに少し浮き上がらせる演出 */
+        .grid-item:active {
+            transform: scale(0.9);
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>絵文字リスト表</h1>
+
+    <!-- 🟢 ここに並べたいものを「class="grid-item"」をつけて並べていきます -->
+    <div class="grid-container">
+        <div class="grid-item">🏍</div>
+        <div class="grid-item">👦</div>
+        <div class="grid-item">👧</div>
+        <div class="grid-item">👨‍🍳</div>
+        <div class="grid-item">👩‍🎨</div>
+        <div class="grid-item">👽</div>
+        <div class="grid-item">🐱</div>
+        <div class="grid-item">🍕</div>
+        <div class="grid-item">🚗</div>
+        <div class="grid-item">🎮</div>
+        <div class="grid-item">🎨</div>
+        <div class="grid-item">🚀</div>
+        <div class="grid-item">🍀</div>
+        <div class="grid-item">🧸</div>
+        <div class="grid-item">🍩</div>
