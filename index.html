@@ -24,7 +24,7 @@
             padding: 10px;
         }
 
-        /* ⬜️ 中身の四角いボックスの基本設定 */
+        /* ⬜️ 中身の四角いボックス（色の設定は下のHTML側で行います） */
         .grid-item {
             border: 1px solid #e0e0e0;
             border-radius: 8px;
@@ -43,7 +43,7 @@
         /* 👆 タップしたときに少し凹む演出 */
         .grid-item:active {
             transform: scale(0.9);
-            filter: brightness(0.9); /* タップ時に少し暗くして押した感を出す */
+            filter: brightness(0.9);
         }
 
         /* 🎨 自作画像用のデザイン設定 */
@@ -51,16 +51,6 @@
             width: 100%;          /* 横幅を枠いっぱいに広げる */
             height: 100%;         /* 縦幅も枠いっぱいに広げる */
             object-fit: cover;    /* 枠に合わせて画像をきれいに収める */
-        }
-
-        /* 🔴 未作成（画像なし）用の背景色（薄いサンゴ色） */
-        .not-ready {
-            background-color: #FFBFBA;
-        }
-
-        /* 🟢 作成済み（画像あり・絵文字）用の背景色（薄い黄緑色） */
-        .ready {
-            background-color: #E9FFB7;
         }
     </style>
 </head>
@@ -70,76 +60,75 @@
 
     <div class="grid-container">
         
-        <!-- 📸 【1〜12番】まだ作っていない画像（薄いサンゴ色：not-ready） -->
-        <!-- ※画像が完成してアップロードできたら、クラスを class="grid-item ready" に変更してください -->
+        <!-- 📸 【1〜12番】まだ作っていない画像（薄いサンゴ色 #FFBFBA） -->
         
         <!-- 1番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/1.png" class="grid-image" alt="ハート">
         </a>
 
         <!-- 2番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/2.png" class="grid-image" alt="バイク">
         </a>
 
         <!-- 3番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/3.png" class="grid-image" alt="男の子">
         </a>
 
         <!-- 4番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/4.png" class="grid-image" alt="女の子">
         </a>
 
         <!-- 5番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/5.png" class="grid-image" alt="宇宙人">
         </a>
 
         <!-- 6番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/6.png" class="grid-image" alt="猫">
         </a>
 
         <!-- 7番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/7.png" class="grid-image" alt="ピザ">
         </a>
 
         <!-- 8番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/8.png" class="grid-image" alt="車">
         </a>
 
         <!-- 9番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/9.png" class="grid-image" alt="ゲーム">
         </a>
 
         <!-- 10番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/10.png" class="grid-image" alt="ロケット">
         </a>
 
         <!-- 11番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/11.png" class="grid-image" alt="寿司">
         </a>
 
         <!-- 12番目 -->
-        <a class="grid-item not-ready" href="https://emojipedia.org" target="_blank">
+        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/12.png" class="grid-image" alt="星">
         </a>
 
 
-        <!-- 🌟 【後半】作成済みの絵文字（薄い黄緑色：ready） -->
-        <a class="grid-item ready" href="https://emojipedia.org" target="_blank">😂</a>
-        <a class="grid-item ready" href="https://emojipedia.org" target="_blank">🔥</a>
-        <a class="grid-item ready" href="https://emojipedia.org" target="_blank">🍀</a>
-        <a class="grid-item ready" href="https://emojipedia.org" target="_blank">🧸</a>
-        <a class="grid-item ready" href="https://emojipedia.org" target="_blank">🍩</a>
+        <!-- 🌟 【後半】作成済みの絵文字（薄い黄緑色 #E9FFB7） -->
+        <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">😂</a>
+        <a class="grid-item" style="background-color: #fire" target="_blank">🔥</a>
+        <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">🍀</a>
+        <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">🧸</a>
+        <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">🍩</a>
         
     </div>
 
