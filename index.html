@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイ・グリッドギャラリー</title>
+    <title>マイ・絵文字＆画像リンク表</title>
     <style>
         body {
             font-family: sans-serif;
@@ -16,51 +16,121 @@
             color: #333;
         }
 
+        /* 📦 ボックスを並べる大枠 */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-            gap: 10px; 
+            gap: 10px;
             padding: 10px;
         }
 
+        /* ⬜️ 中身の四角いボックス */
         .grid-item {
             background-color: #ffffff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
-            aspect-ratio: 1 / 1; 
+            aspect-ratio: 1 / 1; /* 正方形 */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem; 
+            font-size: 2rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: transform 0.2s;
+            text-decoration: none;
+            cursor: pointer;
+            overflow: hidden; /* 画像が枠からはみ出さないようにする */
         }
 
+        /* 👆 タップしたときに少し凹む演出 */
         .grid-item:active {
             transform: scale(0.9);
             background-color: #f0f0f0;
+        }
+
+        /* 🎨 自作画像用のデザイン設定 */
+        .grid-image {
+            width: 100%;          /* 横幅を枠いっぱいに広げる */
+            height: 100%;         /* 縦幅も枠いっぱいに広げる */
+            object-fit: cover;    /* 枠に合わせて画像をきれいに収める */
         }
     </style>
 </head>
 <body>
 
-    <h1>絵文字リスト表</h1>
+    <h1>絵文字＆画像リスト表</h1>
 
     <div class="grid-container">
-        <div class="grid-item">💹</div>
-        <div class="grid-item">👦</div>
-        <div class="grid-item">👧</div>
-        <div class="grid-item">👨‍🍳</div>
-        <div class="grid-item">👩‍🎨</div>
-        <div class="grid-item">👽</div>
-        <div class="grid-item">🐱</div>
-        <div class="grid-item">🍕</div>
-        <div class="grid-item">🚗</div>
-        <div class="grid-item">🎮</div>
-        <div class="grid-item">🎨</div>
-        <div class="grid-item">🚀</div>
-        <div class="grid-item">🍀</div>
-        <div class="grid-item">🧸</div>
-        <div class="grid-item">🍩</div>
-        <div class="grid-item">🐈‍⬛</div>
-        <div class="grid-item">🐈‍⬛</div>
+        
+        <!-- 📸 【前半：1〜12番】imagesフォルダ内の自作画像エリア -->
+        <!-- 1番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/1.png" class="grid-image" alt="ハート">
+        </a>
+
+        <!-- 2番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/2.png" class="grid-image" alt="バイク">
+        </a>
+
+        <!-- 3番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/3.png" class="grid-image" alt="男の子">
+        </a>
+
+        <!-- 4番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/4.png" class="grid-image" alt="女の子">
+        </a>
+
+        <!-- 5番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/5.png" class="grid-image" alt="宇宙人">
+        </a>
+
+        <!-- 6番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/6.png" class="grid-image" alt="猫">
+        </a>
+
+        <!-- 7番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/7.png" class="grid-image" alt="ピザ">
+        </a>
+
+        <!-- 8番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/8.png" class="grid-image" alt="車">
+        </a>
+
+        <!-- 9番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/9.png" class="grid-image" alt="ゲーム">
+        </a>
+
+        <!-- 10番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/10.png" class="grid-image" alt="ロケット">
+        </a>
+
+        <!-- 11番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/11.png" class="grid-image" alt="寿司">
+        </a>
+
+        <!-- 12番目 -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">
+            <img src="images/12.png" class="grid-image" alt="星">
+        </a>
+
+
+        <!-- 🌟 【後半】通常の絵文字エリア（これ以降も自由に追加できます） -->
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">😂</a>
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">🔥</a>
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">🍀</a>
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">🧸</a>
+        <a class="grid-item" href="https://emojipedia.org" target="_blank">🍩</a>
+        
+    </div>
+
+</body>
+</html>
