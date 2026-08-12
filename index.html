@@ -11,9 +11,61 @@
             margin: 20px;
         }
 
+        /* 🔝 ヘッダーエリア：タイトルを左、進捗バーを中央に配置 */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto 20px auto;
+            padding: 0 10px;
+            gap: 20px;
+            flex-wrap: wrap; /* 画面幅が狭いスマホでは自動で折り返し */
+        }
+
+        /* コンパクトにしたタイトル */
         h1 {
-            text-align: center;
+            font-size: 1.25rem;
             color: #333;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        /* 📊 進捗バーコンテナ（中央配置） */
+        .progress-wrapper {
+            flex: 1;
+            max-width: 500px; /* バーの最大幅 */
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 auto; /* 中央寄席 */
+        }
+
+        /* バーの外枠 */
+        .progress-bar-bg {
+            flex: 1;
+            height: 16px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* バーの中身（全体の 17個中5個完成 ≒ 29.4%） */
+        .progress-bar-fill {
+            height: 100%;
+            width: 29.4%; /* 作成済み数に応じて％を変更してください */
+            background-color: #7bc633;
+            transition: width 0.3s ease;
+        }
+
+        /* パーセンテージ／件数テキスト */
+        .progress-text {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #555;
+            white-space: nowrap;
         }
 
         /* 📦 ボックスを並べる大枠 */
@@ -22,9 +74,11 @@
             grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
             gap: 10px;
             padding: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* ⬜️ 中身の四角いボックス（色の設定は下のHTML側で行います） */
+        /* ⬜️ 中身の四角いボックス */
         .grid-item {
             border: 1px solid #e0e0e0;
             border-radius: 8px;
@@ -37,7 +91,7 @@
             transition: transform 0.2s;
             text-decoration: none;
             cursor: pointer;
-            overflow: hidden; /* 画像が枠からはみ出さないようにする */
+            overflow: hidden;
         }
 
         /* 👆 タップしたときに少し凹む演出 */
@@ -48,84 +102,70 @@
 
         /* 🎨 自作画像用のデザイン設定 */
         .grid-image {
-            width: 100%;          /* 横幅を枠いっぱいに広げる */
-            height: 100%;         /* 縦幅も枠いっぱいに広げる */
-            object-fit: cover;    /* 枠に合わせて画像をきれいに収める */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
 
-    <h1>絵文字＆画像リスト表</h1>
+    <!-- 🔝 左：タイトル / 中央：進捗バー -->
+    <div class="header-container">
+        <h1>絵文字＆画像リスト表</h1>
+        
+        <div class="progress-wrapper">
+            <div class="progress-bar-bg">
+                <!-- 完成数に合わせて width を調整してください -->
+                <div class="progress-bar-fill"></div>
+            </div>
+            <span class="progress-text">5 / 17 (29%)</span>
+        </div>
+    </div>
 
     <div class="grid-container">
         
         <!-- 📸 【1〜12番】まだ作っていない画像（薄いサンゴ色 #FFBFBA） -->
-        
-        <!-- 1番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/1.png" class="grid-image" alt="ハート">
         </a>
-
-        <!-- 2番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/2.png" class="grid-image" alt="バイク">
         </a>
-
-        <!-- 3番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/3.png" class="grid-image" alt="男の子">
         </a>
-
-        <!-- 4番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/4.png" class="grid-image" alt="女の子">
         </a>
-
-        <!-- 5番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/5.png" class="grid-image" alt="宇宙人">
         </a>
-
-        <!-- 6番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/6.png" class="grid-image" alt="猫">
         </a>
-
-        <!-- 7番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/7.png" class="grid-image" alt="ピザ">
         </a>
-
-        <!-- 8番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/8.png" class="grid-image" alt="車">
         </a>
-
-        <!-- 9番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/9.png" class="grid-image" alt="ゲーム">
         </a>
-
-        <!-- 10番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/10.png" class="grid-image" alt="ロケット">
         </a>
-
-        <!-- 11番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/11.png" class="grid-image" alt="寿司">
         </a>
-
-        <!-- 12番目 -->
         <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
             <img src="images/12.png" class="grid-image" alt="星">
         </a>
 
-
         <!-- 🌟 【後半】作成済みの絵文字（薄い黄緑色 #E9FFB7） -->
         <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">😂</a>
-        <a class="grid-item" style="background-color: #fire" target="_blank">🔥</a>
+        <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">🔥</a>
         <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">🍀</a>
         <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">🧸</a>
         <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">🍩</a>
