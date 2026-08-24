@@ -29,38 +29,21 @@
 
         h1 {
             font-size: 2.2rem;
-            margin: 10px 0;
+            margin: 10px 0 5px 0;
             color: #1b1f23;
         }
 
         .subtitle {
             font-size: 0.9rem;
             color: #586069;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
-        /* 🔗 リンクボタン群 */
-        .action-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-
-        .action-links a, .action-links button {
+        /* 📈 進捗件数テキスト */
+        .emoji-count {
+            font-size: 1rem;
+            font-weight: 600;
             color: #0366d6;
-            text-decoration: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-            padding: 0;
-        }
-
-        .action-links a:hover, .action-links button:hover {
-            text-decoration: underline;
         }
 
         /* 📊 進捗バー & 検索エリア */
@@ -113,7 +96,7 @@
             border: 1px solid #d1d5da;
             border-radius: 6px;
             outline: none;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
         .filter-input:focus {
@@ -181,14 +164,7 @@
     <header>
         <h1>Are we emoji yet?</h1>
         <div class="subtitle">自作オープンソース絵文字 進捗トラッカー</div>
-
-        <div class="action-links">
-            <span id="emoji-count-text">Emoji 0 / 0 📈</span>
-            <span>•</span>
-            <button onclick="location.reload()">🔃 Refresh emoji</button>
-            <span>•</span>
-            <button onclick="pickRandomUnfinished()">🔀 Random unfinished emoji</button>
-        </div>
+        <div class="emoji-count" id="emoji-count-text">Emoji 0 / 0 📈</div>
     </header>
 
     <div class="controls-container">
@@ -286,21 +262,6 @@
                     item.style.display = 'none';
                 }
             });
-        }
-
-        // 🔀 ランダムに未完成の絵文字へジャンプ
-        function pickRandomUnfinished() {
-            const unfinished = document.querySelectorAll('.grid-item.not-ready');
-            if (unfinished.length === 0) {
-                alert('すべての絵文字が完成しています！🎉');
-                return;
-            }
-            const randomIndex = Math.floor(Math.random() * unfinished.length);
-            const target = unfinished[randomIndex];
-            
-            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            target.style.outline = '4px solid #0366d6';
-            setTimeout(() => target.style.outline = 'none', 2000);
         }
 
         // 初期ロード時に計算を実行
