@@ -3,104 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイ・絵文字＆画像リンク表</title>
+    <title>Are we emoji yet? - SerenityOS Style</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: sans-serif;
-            background-color: #f9f9f9;
-            margin: 20px;
-        }
-
-        /* 🔝 ヘッダーエリア：タイトルを左、進捗バーを中央に配置 */
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto 20px auto;
-            padding: 0 10px;
-            gap: 20px;
-            flex-wrap: wrap; /* 画面幅が狭いスマホでは自動で折り返し */
-        }
-
-        /* コンパクトにしたタイトル */
-        h1 {
-            font-size: 1.25rem;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f6f8fa;
+            color: #24292e;
             margin: 0;
-            white-space: nowrap;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* 📊 進捗バーコンテナ（中央配置） */
-        .progress-wrapper {
-            flex: 1;
-            max-width: 500px; /* バーの最大幅 */
-            min-width: 200px;
+        header {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin: 10px 0;
+            color: #1b1f23;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #586069;
+            margin-bottom: 15px;
+        }
+
+        /* 🔗 リンクボタン群 */
+        .action-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .action-links a, .action-links button {
+            color: #0366d6;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 0;
+        }
+
+        .action-links a:hover, .action-links button:hover {
+            text-decoration: underline;
+        }
+
+        /* 📊 進捗バー & 検索エリア */
+        .controls-container {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .progress-container {
+            width: 100%;
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin: 0 auto; /* 中央寄席 */
+            gap: 15px;
         }
 
-        /* バーの外枠 */
         .progress-bar-bg {
             flex: 1;
-            height: 16px;
-            background-color: #e0e0e0;
-            border-radius: 8px;
+            height: 24px;
+            background-color: #e1e4e8;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
         }
 
-        /* バーの中身（全体の 17個中5個完成 ≒ 29.4%） */
         .progress-bar-fill {
             height: 100%;
-            width: 29.4%; /* 作成済み数に応じて％を変更してください */
-            background-color: #7bc633;
-            transition: width 0.3s ease;
+            background-color: #28a745;
+            width: 0%; /* JSで動的計算 */
+            transition: width 0.4s ease;
         }
 
-        /* パーセンテージ／件数テキスト */
-        .progress-text {
-            font-size: 0.85rem;
+        .progress-percent {
             font-weight: bold;
-            color: #555;
-            white-space: nowrap;
+            font-size: 1.1rem;
+            min-width: 60px;
+            text-align: right;
         }
 
-        /* 📦 ボックスを並べる大枠 */
+        /* 🔍 フィルター入力 */
+        .filter-input {
+            width: 100%;
+            max-width: 350px;
+            padding: 8px 14px;
+            font-size: 1rem;
+            border: 1px solid #d1d5da;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .filter-input:focus {
+            border-color: #0366d6;
+            box-shadow: 0 0 0 3px rgba(3,102,214,0.3);
+        }
+
+        /* 📦 絵文字グリッド */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-            gap: 10px;
-            padding: 10px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+            gap: 8px;
+            width: 100%;
+            max-width: 900px;
         }
 
-        /* ⬜️ 中身の四角いボックス */
         .grid-item {
-            border: 1px solid #e0e0e0;
+            aspect-ratio: 1 / 1;
             border-radius: 8px;
-            aspect-ratio: 1 / 1; /* 正方形 */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
+            font-size: 2.2rem;
             text-decoration: none;
-            cursor: pointer;
+            transition: transform 0.15s ease, filter 0.15s ease;
+            position: relative;
             overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* 👆 タップしたときに少し凹む演出 */
+        .grid-item:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+
         .grid-item:active {
-            transform: scale(0.9);
-            filter: brightness(0.9);
+            transform: scale(0.95);
         }
 
-        /* 🎨 自作画像用のデザイン設定 */
+        /* 未完成（画像なし）背景色 */
+        .grid-item.not-ready {
+            background-color: #ffcdd2;
+            color: #b71c1c;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-align: center;
+            word-break: break-all;
+            padding: 2px;
+        }
+
+        /* 完成（絵文字・画像あり）背景色 */
+        .grid-item.ready {
+            background-color: #dcedc8;
+        }
+
         .grid-image {
             width: 100%;
             height: 100%;
@@ -110,67 +178,133 @@
 </head>
 <body>
 
-    <!-- 🔝 左：タイトル / 中央：進捗バー -->
-    <div class="header-container">
-        <h1>絵文字＆画像リスト表</h1>
-        
-        <div class="progress-wrapper">
-            <div class="progress-bar-bg">
-                <!-- 完成数に合わせて width を調整してください -->
-                <div class="progress-bar-fill"></div>
-            </div>
-            <span class="progress-text">5 / 17 (29%)</span>
+    <header>
+        <h1>Are we emoji yet?</h1>
+        <div class="subtitle">自作オープンソース絵文字 進捗トラッカー</div>
+
+        <div class="action-links">
+            <span id="emoji-count-text">Emoji 0 / 0 📈</span>
+            <span>•</span>
+            <button onclick="location.reload()">🔃 Refresh emoji</button>
+            <span>•</span>
+            <button onclick="pickRandomUnfinished()">🔀 Random unfinished emoji</button>
         </div>
+    </header>
+
+    <div class="controls-container">
+        <div class="progress-container">
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <span class="progress-percent" id="progress-percent">0%</span>
+        </div>
+
+        <input type="text" id="filter-input" class="filter-input" placeholder="Filter..." oninput="filterEmoji()">
     </div>
 
-    <div class="grid-container">
-        
-        <!-- 📸 【1〜12番】まだ作っていない画像（薄いサンゴ色 #FFBFBA） -->
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/😀.png" class="grid-image" alt="ハート">
+    <div class="grid-container" id="emoji-grid">
+        <!-- 📸 未作成項目 (not-ready) -->
+        <a class="grid-item not-ready" data-name="ハート" href="https://emojipedia.org" target="_blank">
+            <img src="images/1.png" class="grid-image" alt="ハート" onerror="this.remove()">
+            ハート
         </a>
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/2.png" class="grid-image" alt="バイク">
+        <a class="grid-item not-ready" data-name="バイク" href="https://emojipedia.org" target="_blank">
+            <img src="images/2.png" class="grid-image" alt="バイク" onerror="this.remove()">
+            バイク
         </a>
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/3.png" class="grid-image" alt="男の子">
+        <a class="grid-item not-ready" data-name="男の子" href="https://emojipedia.org" target="_blank">
+            <img src="images/3.png" class="grid-image" alt="男の子" onerror="this.remove()">
+            男の子
         </a>
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/4.png" class="grid-image" alt="女の子">
+        <a class="grid-item not-ready" data-name="女の子" href="https://emojipedia.org" target="_blank">
+            <img src="images/4.png" class="grid-image" alt="女の子" onerror="this.remove()">
+            女の子
         </a>
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/5.png" class="grid-image" alt="宇宙人">
+        <a class="grid-item not-ready" data-name="宇宙人" href="https://emojipedia.org" target="_blank">
+            <img src="images/5.png" class="grid-image" alt="宇宙人" onerror="this.remove()">
+            宇宙人
         </a>
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/6.png" class="grid-image" alt="猫">
+        <a class="grid-item not-ready" data-name="猫" href="https://emojipedia.org" target="_blank">
+            <img src="images/6.png" class="grid-image" alt="猫" onerror="this.remove()">
+            猫
         </a>
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/7.png" class="grid-image" alt="ピザ">
+        <a class="grid-item not-ready" data-name="ピザ" href="https://emojipedia.org" target="_blank">
+            <img src="images/7.png" class="grid-image" alt="ピザ" onerror="this.remove()">
+            ピザ
         </a>
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/8.png" class="grid-image" alt="車">
+        <a class="grid-item not-ready" data-name="車" href="https://emojipedia.org" target="_blank">
+            <img src="images/8.png" class="grid-image" alt="車" onerror="this.remove()">
+            車
         </a>
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/9.png" class="grid-image" alt="ゲーム">
+        <a class="grid-item not-ready" data-name="ゲーム" href="https://emojipedia.org" target="_blank">
+            <img src="images/9.png" class="grid-image" alt="ゲーム" onerror="this.remove()">
+            ゲーム
         </a>
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/10.png" class="grid-image" alt="ロケット">
+        <a class="grid-item not-ready" data-name="ロケット" href="https://emojipedia.org" target="_blank">
+            <img src="images/10.png" class="grid-image" alt="ロケット" onerror="this.remove()">
+            ロケット
         </a>
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/11.png" class="grid-image" alt="寿司">
+        <a class="grid-item not-ready" data-name="寿司" href="https://emojipedia.org" target="_blank">
+            <img src="images/11.png" class="grid-image" alt="寿司" onerror="this.remove()">
+            寿司
         </a>
-        <a class="grid-item" style="background-color: #FFBFBA;" href="https://emojipedia.org" target="_blank">
-            <img src="images/12.png" class="grid-image" alt="星">
+        <a class="grid-item not-ready" data-name="星" href="https://emojipedia.org" target="_blank">
+            <img src="images/12.png" class="grid-image" alt="星" onerror="this.remove()">
+            星
         </a>
 
-        <!-- 🌟 【後半】作成済みの絵文字（薄い黄緑色 #E9FFB7） -->
-        <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">😂</a>
-        <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">🔥</a>
-        <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">🍀</a>
-        <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">🧸</a>
-        <a class="grid-item" style="background-color: #E9FFB7;" href="https://emojipedia.org" target="_blank">🍩</a>
-        
+        <!-- 🌟 完成項目 (ready) -->
+        <a class="grid-item ready" data-name="嬉し泣き" href="https://emojipedia.org" target="_blank">😂</a>
+        <a class="grid-item ready" data-name="炎" href="https://emojipedia.org" target="_blank">🔥</a>
+        <a class="grid-item ready" data-name="四つ葉のクローバー" href="https://emojipedia.org" target="_blank">🍀</a>
+        <a class="grid-item ready" data-name="テディベア" href="https://emojipedia.org" target="_blank">🧸</a>
+        <a class="grid-item ready" data-name="ドーナツ" href="https://emojipedia.org" target="_blank">🍩</a>
     </div>
 
+    <script>
+        // 📊 進捗の自動計算
+        function updateProgress() {
+            const total = document.querySelectorAll('.grid-item').length;
+            const ready = document.querySelectorAll('.grid-item.ready').length;
+            const percentage = total > 0 ? ((ready / total) * 100).toFixed(1) : 0;
+
+            document.getElementById('emoji-count-text').innerText = `Emoji ${ready} / ${total} 📈`;
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+            document.getElementById('progress-percent').innerText = `${percentage}%`;
+        }
+
+        // 🔍 Filter機能（絞り込み）
+        function filterEmoji() {
+            const query = document.getElementById('filter-input').value.toLowerCase();
+            const items = document.querySelectorAll('.grid-item');
+
+            items.forEach(item => {
+                const name = (item.getAttribute('data-name') || item.innerText).toLowerCase();
+                if (name.includes(query)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // 🔀 ランダムに未完成の絵文字へジャンプ
+        function pickRandomUnfinished() {
+            const unfinished = document.querySelectorAll('.grid-item.not-ready');
+            if (unfinished.length === 0) {
+                alert('すべての絵文字が完成しています！🎉');
+                return;
+            }
+            const randomIndex = Math.floor(Math.random() * unfinished.length);
+            const target = unfinished[randomIndex];
+            
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            target.style.outline = '4px solid #0366d6';
+            setTimeout(() => target.style.outline = 'none', 2000);
+        }
+
+        // 初期ロード時に計算を実行
+        window.onload = updateProgress;
+    </script>
 </body>
 </html>
